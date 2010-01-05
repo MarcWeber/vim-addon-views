@@ -7,8 +7,13 @@ fun! views#Escape(s)
 endf
 
 " open a view of type type passing arguments args
-fun! views#View(type, args)
-  exec s:c['show_action'].' vim_view_'.a:type.'://'.views#Escape(string(a:args))
+fun! views#View(type, args, ...)
+  let urlOnly = a:0 > 0 ? a:1 : 0
+  if urlOnly
+    return 'vim_view_'.a:type.'://'.views#Escape(string(a:args))
+  else
+    exec s:c['show_action'].' vim_view_'.a:type.'://'.views#Escape(string(a:args))
+  endif
 endf
 
 " helper function filling the buffer with contents defined by buffer url
@@ -16,11 +21,10 @@ fun! views#FillContents()
   let g:g=9
   let list = matchlist(expand('%'), 'vim_view_\([^:/]*\)://\(.*\)')
   let f = get(s:c, list[1], 'views#UnkownViewType')
-  echo list
   let args = eval(list[2])
 
   try
-    debug let contents = funcref#Call(f, args)
+    let contents = funcref#Call(f, args)
   catch /.*/
     let contents = "Exception:\n".v:exception
   endtry
