@@ -1,4 +1,4 @@
-*vim-plugin-views.txt*
+*vim-addon-views.txt*
 
 provide a simple framework which let's you show views of things.
 A *view* is defined by a file url. So you can refresh it using :e!
@@ -24,12 +24,12 @@ Shortcut for >
 ------------------------------------------------------------------------------
 jumping from one view to another ~
 
-See vim-plugin-goto-thing-at-cursor plugin.
+See vim-addon-goto-thing-at-cursor plugin.
 You can customize Vim's gf mapping easily to support jumping to tags etc.
 
 ------------------------------------------------------------------------------
 customization ~
 Of course if _fun and _exec is not enough you can extend g:vim_views_config.
-See usage in vim-plugin-views.vim
+See usage in vim-addon-views.vim
 
 You can also use augroups to set syntax highliting and such
