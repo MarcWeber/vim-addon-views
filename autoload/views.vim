@@ -3,7 +3,7 @@ if !exists('g:vim_views_config') | let g:vim_views_config = {} | endif | let s:c
 let s:c['show_action'] = get(s:c,'show_action', 'sp')
 
 fun! views#Escape(s)
-  return escape(a:s, "[,")
+  return escape(a:s, "[#,")
 endf
 
 " open a view of type type passing arguments args
@@ -44,5 +44,5 @@ endf
 
 " implementation vim_view_fun
 fun! views#ContentFun(...)
-  return funcref#Call(funcref#Function(a:1, a:000[1:]))
+  return funcref#Call(funcref#Function(a:1), a:000[1:])
 endf

@@ -24,11 +24,8 @@ Shortcut for >
 ------------------------------------------------------------------------------
 jumping from one view to another ~
 
-gf of vim is already very useful. You can jump to includes and files.
-So let's extend it and make gf even more useful by allowing you to define
-different actions. (You can still use gF to use Vim's default behaviour or
-use a different mapping)
-
+See vim-plugin-goto-thing-at-cursor plugin.
+You can customize Vim's gf mapping easily to support jumping to tags etc.
 
 ------------------------------------------------------------------------------
 customization ~
