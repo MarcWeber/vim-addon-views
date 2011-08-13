@@ -16,12 +16,17 @@ fun! views#View(type, args, ...)
   endif
 endf
 
-" helper function filling the buffer with contents defined by buffer url
-fun! views#FillContents()
-  let g:g=9
+fun! views#ViewType()
   let list = matchlist(expand('%'), 'vim_view_\([^:/]*\)://\(.*\)')
   let f = get(s:c, list[1], 'views#UnkownViewType')
   let args = eval(list[2])
+  return [f,args]
+endf
+
+" helper function filling the buffer with contents defined by buffer url
+fun! views#FillContents()
+  let g:g=9
+  let [f,args] = views#ViewType()
 
   try
     let contents = funcref#Call(f, args)
