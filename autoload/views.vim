@@ -3,7 +3,7 @@ if !exists('g:vim_views_config') | let g:vim_views_config = {} | endif | let s:c
 let s:c['show_action'] = get(s:c,'show_action', 'sp')
 
 fun! views#Escape(s)
-  return escape(a:s, "[#,")
+  return escape(a:s, '[#,\\')
 endf
 
 " open a view of type type passing arguments args
@@ -12,7 +12,7 @@ fun! views#View(type, args, ...)
   if urlOnly
     return 'vim_view_'.a:type.'://'.views#Escape(string(a:args))
   else
-    exec s:c['show_action'].' vim_view_'.a:type.'://'.views#Escape(string(a:args))
+    exec s:c['show_action'].' '.fnameescape('vim_view_'.a:type.'://'.string(a:args))
   endif
 endf
 
