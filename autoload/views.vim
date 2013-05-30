@@ -36,6 +36,7 @@ fun! views#FillContents()
   
   normal ggdG
   call append(0, split(contents,"\n"))
+  set buftype=nofile
 endf
 
 fun! views#UnkownViewType(...)
